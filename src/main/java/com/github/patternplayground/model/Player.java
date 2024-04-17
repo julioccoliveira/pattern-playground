@@ -1,6 +1,7 @@
 package com.github.patternplayground.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Player {
 	private Long id;
 	private String name;
 	@ElementCollection
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Card> deck;
 	private Long wins;
 	private Long loses;
